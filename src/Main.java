@@ -1,9 +1,13 @@
 import java.util.Stack;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 
 public class Main {
 
-	private static String expression = "S=aSb/ab";
-	private static String[] PossList;
+	private static String expression = "S=aSb/Ab/Ba;A=ab/aC;C=ab";
+	private static List<String> ListOfRules;
 	private static Stack pilha;
 	
 	
@@ -11,18 +15,15 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Functions func = new Functions();
-
-		expression = func.RemoveInitialSymbol(expression);
-		PossList = func.SeparateRules(expression);
-		pilha = func.LoadStack(PossList);
-
-		while (!pilha.isEmpty())
-		{
-			System.err.println(pilha.pop());
-		}
-
-
-
+		
+		ListOfRules = func.SeparateRules(expression);
+		
+		
+			for (String string : ListOfRules) {
+				System.out.println(string);
+			}
+			
+		
 
 	}
 
