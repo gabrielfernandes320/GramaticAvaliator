@@ -50,30 +50,26 @@ public class Functions {
 	
 	
 
-	public int getRandomElement(List<Integer> list)
+	public int getRandomElement(int vectorSize)
 	{
 		Random rand = new Random();
-		return list.get(rand.nextInt(list.size()));
+		List<Integer> intList = null;
+
+		for (int i=0;i< vectorSize;i++){
+			intList.add(i);
+		}
+		return intList.get(rand.nextInt(intList.size()));
 	}
 	
 	public Map<Character, List<String>> loadHash(List<String> ListOfRules) {
 		Map<Character,List<String>> derivations = new HashMap<Character, List<String>>();
-		
-		
-		
-		
+
 		for (String poss : ListOfRules) {
 			
 			for (String string : ListOfRules) {
 				derivations.put(string.charAt(0), SeparateRules(RemoveInitialSymbol(string), "/"));
 			}
-			/*for (char p: poss.toCharArray()) {
-				if (Character.isUpperCase(p)) {
-					rules.put(p, poss);
-				}
-				
-			}*/
-		
+
 		}
 		
 		return derivations;
