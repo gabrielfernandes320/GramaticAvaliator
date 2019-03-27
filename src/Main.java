@@ -16,7 +16,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		Functions func = new Functions();
 		
-		ListOfRules = func.SeparateRules(expression);
+		ListOfRules = func.SeparateRules(expression,";");
 		
 		
 			for (String string : ListOfRules) {

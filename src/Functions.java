@@ -16,10 +16,10 @@ public class Functions {
 		
 	}
 	
-	List<String>  SeparateRules(String Expression) {
+	List<String>  SeparateRules(String Expression, String separator) {
 		
 		List<String> ListOfRules = new ArrayList<String>();
-		String[] strings = Expression.split(";", CountNumberOfRules(Expression)+1);
+		String[] strings = Expression.split(separator, CountNumberOfRules(Expression)+1);
 				
 		for (String rule : strings) {
 			ListOfRules.add(rule);
@@ -47,6 +47,8 @@ public class Functions {
 		return pilha;
 		
 	}
+	
+	
 
 	public int getRandomElement(List<Integer> list)
 	{
@@ -54,21 +56,27 @@ public class Functions {
 		return list.get(rand.nextInt(list.size()));
 	}
 	
-	Map<Character, String> loadHash(List<String> possList) {
-		Map<Character,String> rules = new HashMap<Character,String>();
+	public Map<Character, List<String>> loadHash(List<String> ListOfRules) {
+		Map<Character,List<String>> derivations = new HashMap<Character, List<String>>();
 		
-		for (String poss : possList) {
+		
+		
+		
+		for (String poss : ListOfRules) {
 			
-			for (char p: poss.toCharArray()) {
+			for (String string : ListOfRules) {
+				derivations.put(string.charAt(0), SeparateRules(RemoveInitialSymbol(string), "/"));
+			}
+			/*for (char p: poss.toCharArray()) {
 				if (Character.isUpperCase(p)) {
 					rules.put(p, poss);
 				}
 				
-			}
+			}*/
 		
 		}
 		
-		return rules;
+		return derivations;
 	}
 
 }
