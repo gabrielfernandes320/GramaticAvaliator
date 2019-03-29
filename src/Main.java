@@ -16,21 +16,33 @@ public class Main {
 		listOfRules = func.SeparateRules(expression,";");
 		mappedGramatic = func.loadHash(listOfRules);
 
-		//pilha.push(mappedGramatic.get(0).get(func.getRandomElement(mappedGramatic.get(0).size())));
-		List<Integer> teste = null;
-		Character sas = 's';
+
+		String firtElement = func.GetRandomElementOfNonTerminal(mappedGramatic, 'S');
+		List<Character> terminalsList = new ArrayList<Character>();
+		terminalsList =	func.stringToCharArray(firtElement);
+		pilha = func.LoadStack(terminalsList);
+		while (!pilha.isEmpty()) {
+		if(func.isUppercase((Character) pilha.peek())){
+			firtElement = func.GetRandomElementOfNonTerminal(mappedGramatic,(Character)pilha.peek());
+			terminalsList =	func.stringToCharArray(firtElement);
+			pilha = func.LoadStack(terminalsList);
+		}
+		else {
+			System.out.println(pilha.pop());
+		}
 
 
-		mappedGramatic.get('S').forEach(System.out::println);
+		}
+	}
+
+
+
+
 
 
 	}
 
 
-			
-		
-
-	}
 
 	
 	

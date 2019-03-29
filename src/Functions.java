@@ -17,7 +17,7 @@ public class Functions {
 	}
 	
 	List<String>  SeparateRules(String Expression, String separator) {
-		
+
 		List<String> ListOfRules = new ArrayList<String>();
 		String[] strings = Expression.split(separator, CountNumberOfRules(Expression)+1);
 				
@@ -36,29 +36,45 @@ public class Functions {
 		
 	}
 	
-	Stack LoadStack (String[] Expression) {
+	Stack LoadStack (List<Character> Expression) {
 		
 		Stack pilha = new Stack();
 
-		for(String string : Expression){
-			pilha.push(string);
+		for(Character chars : Expression){
+			pilha.push(chars);
 		}
 
 		return pilha;
 		
 	}
 	
-	
+
+	public List<Character> stringToCharArray(String elements) {
+		char[] a = elements.toCharArray();
+		List<Character> list = new ArrayList<Character>();
+		for (Character aa : a) {
+			list.add(aa);
+		}
+		return list;
+	}
+
+	public boolean isUppercase(char value){
+		if(Character.isUpperCase(value)){
+			return true;
+		}
+		return  false;
+	}
+
 
 	public int getRandomElement(int vectorSize)
 	{
 		Random rand = new Random();
-		List<Integer> intList = null;
+		List<Integer> listOfInt =new ArrayList<Integer>();
 
 		for (int i=0;i< vectorSize;i++){
-			intList.add(i);
+			listOfInt.add(i);
 		}
-		return intList.get(rand.nextInt(intList.size()));
+		return listOfInt.get(rand.nextInt(listOfInt.size()));
 	}
 	
 	public Map<Character, List<String>> loadHash(List<String> ListOfRules) {
@@ -71,8 +87,11 @@ public class Functions {
 			}
 
 		}
-		
 		return derivations;
+	}
+
+	public String GetRandomElementOfNonTerminal(Map<Character, List<String>> mappedGramatic, char NonTerminal){
+		return mappedGramatic.get(NonTerminal).get(getRandomElement(mappedGramatic.get(NonTerminal).size()));
 	}
 
 }
