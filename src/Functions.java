@@ -36,22 +36,25 @@ public class Functions {
 		
 	}
 	
-	Stack LoadStack (List<Character> Expression) {
-		
-		Stack pilha = new Stack();
+	Stack LoadStack (List<Character> Expression, Stack atualStack) {
 
 		for(Character chars : Expression){
-			pilha.push(chars);
+			atualStack.push(chars);
 		}
 
-		return pilha;
+		return atualStack;
 		
 	}
 	
 
 	public List<Character> stringToCharArray(String elements) {
-		char[] a = elements.toCharArray();
 		List<Character> list = new ArrayList<Character>();
+		String reverse = "";
+		for(int i = elements.length()-1; i>=0; i-- )
+		{
+			reverse = reverse + elements.charAt(i);
+		}
+		char[] a = reverse.toCharArray();
 		for (Character aa : a) {
 			list.add(aa);
 		}
